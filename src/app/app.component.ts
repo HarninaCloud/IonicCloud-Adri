@@ -1,3 +1,4 @@
+import { HomePage } from './../pages/home/home';
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -17,13 +18,10 @@ export class MyApp {
       //Comprobar la sesion
       //Si hay un cambio en la sesión automáticamente cambiara rootPage para mostrar la página de login o las pestañas en función de si tenemos la sesión activa o no
       this.auth.Session.subscribe(session => {
-        if (session) {
-          this.rootPage = 'MisTabsPage';
-        }
-        else {
+        if (!session) {
           this.rootPage = 'LoginPage';
         }
-      });
+      })
 
       statusBar.styleDefault();
       splashScreen.hide();
